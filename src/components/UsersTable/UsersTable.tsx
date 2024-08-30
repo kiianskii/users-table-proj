@@ -1,11 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { selectUsers } from "../../redux/users/slice";
+
 import UserItem from "../UserItem/UserItem";
 import s from "./UserTable.module.css";
+import { selectFilteredUsers } from "../../redux/selectors";
 
 const UsersTable = () => {
-  const users = useSelector(selectUsers);
+  const users = useSelector(selectFilteredUsers);
 
   return (
     <div>

@@ -2,7 +2,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { selectFilter } from "./filter/slice";
 import { selectUsers } from "./users/slice";
 
-export const selectFilteredContacts = createSelector(
+export const selectFilteredUsers = createSelector(
   [selectUsers, selectFilter],
   (contacts, searchStr) => {
     return contacts.filter((item) =>
