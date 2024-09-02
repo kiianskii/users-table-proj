@@ -5,6 +5,7 @@ import UsersTable from "./components/UsersTable/UsersTable";
 import { useDispatch } from "react-redux";
 import { fetchAllUsersThunk } from "./redux/users/operations";
 import { AppDispatch } from "./redux/store";
+import Header from "./components/Header/Header";
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
@@ -15,6 +16,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <SearchBox />
       <UsersTable />
     </div>

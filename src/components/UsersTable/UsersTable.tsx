@@ -1,8 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import UserItem from "../UserItem/UserItem";
 import s from "./UserTable.module.css";
+
+import UserItem from "../UserItem/UserItem";
 import { selectFilteredUsers } from "../../redux/selectors";
 
 const UsersTable = () => {
@@ -19,7 +20,7 @@ const UsersTable = () => {
             <th className={s.headline}>Phone</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className={s.body}>
           {users.map((user) => {
             return <UserItem user={user} />;
           })}

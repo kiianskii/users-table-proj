@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import {
   changeEmailFilter,
   changeNameFilter,
@@ -10,6 +11,7 @@ import {
   selectPhone,
   selectUsername,
 } from "../../redux/filter/slice";
+
 import s from "./SearchBox.module.css";
 
 const SearchBox = () => {
@@ -20,43 +22,62 @@ const SearchBox = () => {
   const currentPhone = useSelector(selectPhone);
 
   return (
-    <div>
-      <label>
+    <div className={s.wrapper}>
+      <p className={s.title}>Filter by:</p>
+
+      <div className={s.input_container}>
         <input
+          className={s.input_field}
           type="text"
-          name="name"
-          placeholder="Name..."
+          id="name"
+          placeholder=" "
           value={currentName}
           onChange={(e) => dispatch(changeNameFilter(e.target.value))}
         />
-      </label>
-      <label>
+        <label className={s.placeholder} htmlFor="name">
+          Name
+        </label>
+      </div>
+
+      <div className={s.input_container}>
         <input
+          className={s.input_field}
           type="text"
-          name="username"
-          placeholder="Username..."
+          placeholder=" "
+          id="username"
           value={currentUsername}
           onChange={(e) => dispatch(changeUsernameFilter(e.target.value))}
         />
-      </label>
-      <label>
+        <label htmlFor="username" className={s.placeholder}>
+          Username
+        </label>
+      </div>
+
+      <div className={s.input_container}>
         <input
+          className={s.input_field}
           type="text"
-          name="email"
-          placeholder="Email..."
+          placeholder=" "
+          id="email"
           value={currentEmail}
           onChange={(e) => dispatch(changeEmailFilter(e.target.value))}
         />
-      </label>
-      <label>
+        <label htmlFor="email" className={s.placeholder}>
+          Email
+        </label>
+      </div>
+
+      <div className={s.input_container}>
         <input
+          className={s.input_field}
           type="text"
-          name="phone"
-          placeholder="Phone..."
+          id="phone"
+          placeholder=" "
           value={currentPhone}
           onChange={(e) => dispatch(changePhoneFilter(e.target.value))}
         />
-      </label>
+        <label className={s.placeholder}>Phone</label>
+      </div>
 
       <button
         className={s.btn}
@@ -69,6 +90,13 @@ const SearchBox = () => {
       >
         Reset all
       </button>
+
+      {/* <div className="input-container">
+        <input type="text" id="input" className="input-field" placeholder=" " />
+        <label htmlFor="input" className="placeholder">
+          Your Placeholder
+        </label>
+      </div> */}
     </div>
   );
 };
