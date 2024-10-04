@@ -9,7 +9,7 @@ const SearchBox = () => {
 
   return (
     <div className={s.wrapper}>
-      <p className={s.title}> Search by name, username, email, or phone:</p>
+      <h3 className={s.title}> Filter:</h3>
 
       <div className={s.input_container}>
         <input
@@ -20,6 +20,9 @@ const SearchBox = () => {
           value={currentFilter}
           onChange={(e) => dispatch(changeFilter(e.target.value))}
         />
+        <label className={s.placeholder} htmlFor="filter">
+          Name, username, email, or phone:
+        </label>
 
         <button
           className={s.btn}
