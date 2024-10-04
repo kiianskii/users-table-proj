@@ -1,22 +1,19 @@
 import { createSelector } from "@reduxjs/toolkit";
-
-import {
-  selectEmail,
-  selectName,
-  selectPhone,
-  selectUsername,
-} from "./filter/slice";
+import { selectFilter } from "./filter/slice"; // Імпорт нового селектора
 import { selectUsers } from "./users/slice";
 
 export const selectFilteredUsers = createSelector(
-  [selectUsers, selectName, selectUsername, selectEmail, selectPhone],
-  (contacts, name, username, email, phone) => {
-    return contacts
-      .filter((item) => item.name.toLowerCase().includes(name.toLowerCase()))
-      .filter((item) =>
-        item.username.toLowerCase().includes(username.toLowerCase())
-      )
-      .filter((item) => item.email.toLowerCase().includes(email.toLowerCase()))
-      .filter((item) => item.phone.toLowerCase().includes(phone.toLowerCase()));
+  [selectUsers, selectFilter],
+  (contacts, filter) => {
+    const lowerCaseFilter = filter.toLowerCase();
+
+    return contacts.filter((item) => {
+      return (
+        item.name.toLowerCase().includes(lowerCaseFilter) ||
+        item.username.toLowerCase().includes(lowerCaseFilter) ||
+        item.email.toLowerCase().includes(lowerCaseFilter) ||
+        item.phone.toLowerCase().includes(lowerCaseFilter)
+      );
+    });
   }
 );
